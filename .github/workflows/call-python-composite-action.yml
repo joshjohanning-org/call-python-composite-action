@@ -1,0 +1,19 @@
+name: call-python-composite-action
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: joshjohanning-org/composite-action-sample-python@main
+        with:
+          directory-path: ${{ runner.temp }}
+          token: ${{ github.token }}
